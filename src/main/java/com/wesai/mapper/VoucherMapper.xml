@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wesai.lottery.itest.dao.voucher.VoucherDao">
+	<sql id="selectId">
+		id,
+		title,
+		inner_title,
+		pwd_type,
+		bind_account,
+		category,
+		status,
+		amount_type,
+		nominal_amount,
+		stock,
+		put_mode,
+		put_num,
+		consume_num,
+		term_type,
+		start_time,
+		end_time,
+		fixed_term,
+		fixed_start_term,
+		update_time,
+		create_time,
+		remark
+	</sql>
+	
+	<!-- 获取购彩优惠券列表 -->
+	<select id="getLotteryVoucherList" resultType="Voucher">
+		select 
+		<include refid="selectId" />
+		from 
+			voucher 
+		where 
+			voucher.put_mode = 1 
+		and 
+			voucher.category='cash' 
+		order by 
+			id desc
+		limit
+		#{startIndex}
+		<if test="pageSize != null and pageSize != ''">
+		 ,#{pageSize}
+		</if>
+	</select>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wesai.lottery.itest.dao.award.AwardResultDao">
+    
+    <!-- 返回开奖结果Map集合 -->
+    <resultMap type="AwardResult" id="AwardResultMap">
+    	<result column="out_other_win_status" property="otherWinStatus"/>
+    	<result column="out_ws_win_status"    property="wsWinStatus"/>
+    	<result column="out_other_award_status" property="otherAwardStatus"/>
+    	<result column="out_ws_award_status" property="wsAwardStatus"/>
+    	<result column="out_compare_award_result" property="compareAwardResult"/>
+    	<result column="out_send_award_type" property="sendAwardType"/>
+    </resultMap>
+    
+    <!-- 调用D3存储过程 -->
+    <select id="call_check_awarding" statementType="CALLABLE" 
+        parameterType="java.lang.String" resultMap="AwardResultMap">
+        call ws_check_lottery_awarding_test(#{orderId,mode=IN,jdbcType=VARCHAR});
+    </select>
+    
+</mapper>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wesai.lottery.itest.dao.voucher.VoucherTaskDao">
+	
+    <sql id="selectId">
+    	id,
+    	title,
+    	stock,
+    	put_num,
+    	start_time,
+    	end_time,
+    	triger_mode,
+    	update_time,
+    	create_time,
+    	status,
+    	bind_user_id,
+    	operater,
+    	has_black,
+    	channel_id
+    </sql>
+    
+    <!-- 通过任务编号获取任务名称 -->
+	<select id="getTaskNameById" resultType="java.lang.String">
+		select 
+			title 
+		from 
+			voucher_task 
+		where 1 = 1
+		<if test="''">
+		and		
+			id = #{id}
+		</if>
+	</select>
+	
+	<!-- 返回[通过用户名找到手动任务列表]的结果集 -->
+	<resultMap type="ArtificialList" id="VoucherArtificialResultMap">
+		<result column="voucherTaskId" property="voucherTaskId"/>
+		<result column="operater" property="operater"/>
+		<result column="mobile" property="mobile"/>
+		<result column="userId" property="userId"/>
+		<result column="operaterName" property="operaterName"/>
+		<result column="createTime" property="createTime"/>
+		<result column="nominalAmount" property="nominalAmount"/>
+	</resultMap>
+	
+	<!-- 通过任务编号删除用户卡券任务表的记录 -->
+	<delete id="deleteVoucherTaskUser" parameterType="java.lang.Integer" flushCache="true">
+	    delete from voucher_task_user where voucher_task_id = #{voucher_task_id}
+	</delete>
+	
+	<!-- 通过任务编号删除卡券任务表的记录 -->
+	<delete id="deleteVoucherTask" parameterType="java.lang.Integer" flushCache="true">
+	    delete from voucher_task where voucher_task.id = #{voucher_task_id}
+	</delete>
+	
+	<!-- 通过任务编号删除该关联的卡券的记录 -->
+	<delete id="deleteVoucherByTaskId" parameterType="java.lang.Integer" flushCache="true">
+		delete from voucher where voucher.id=
+  		(select vtr.voucher_id from voucher_task_relation vtr 
+  		where vtr.voucher_task_id = #{voucher_task_id})	    
+	</delete>
+	
+	<!-- 删除卡券绑定的券吗的记录 -->
+	<delete id="deleteVoucherCodeBind" parameterType="java.lang.Integer" flushCache="true">
+	    delete from voucher_code_bind where voucher_task_id = #{voucher_task_id}
+	</delete>
+	
+	<!-- 删除卡券关联玩法项目的记录 -->
+	<delete id="deleteVoucherApplyProject" parameterType="java.lang.Integer" flushCache="true">
+	    delete from voucher_apply_project where voucher_id in 
+  		(select vtr.voucher_id from voucher_task_relation vtr 
+  		where vtr.voucher_task_id = #{voucher_task_id})
+	</delete>
+	
+	<!-- 删除卡券关联任务的记录 -->
+	<delete id="deleteVoucherTaskRelation" parameterType="java.lang.Integer" flushCache="true">
+	    delete from voucher_task_relation where voucher_task_id = #{voucher_task_id}
+	</delete>
+	
+	<!-- 删除卡券关联规则的记录 -->
+	<delete id="deleteVoucherConsumeRule" parameterType="java.lang.Integer" flushCache="true">
+	    delete from voucher_consume_rule where voucher_id in 
+  		(select vtr.voucher_id from voucher_task_relation vtr 
+  		where vtr.voucher_task_id = #{voucher_task_id})
+	</delete>
+	
+	<!-- 通过卡券任务编号找到该关联的卡券编号 -->
+	<select id="getVoucherIdByTaskId" resultType="java.lang.Integer">
+	    select 
+	    	voucher_id 
+	    from 
+	    	voucher_task_relation  
+	    where 1 = 1
+	    <if test="''">
+	    and
+	    	voucher_task_id = #{voucher_task_id}
+	    </if>
+	</select>
+	
+	<!-- 通过触发模式类型找到卡券任务信息 -->
+	<select id="getVoucherTaskById" resultType="VoucherTask">
+	    select 
+	    <include refid="selectId" /> 
+	    from 
+	    	voucher_task 
+	    where 1 = 1
+	    <if test="taskId != null and taskId != ''">
+	    and
+	    	id = #{taskId}
+	    </if>    
+	    <if test="targerId != null and targerId != ''">
+	    and   
+	    	triger_mode = #{targerId}
+	    </if>
+	    order by 
+	    	id desc; 
+	</select>
+	
+<!-- #新增卡券名称
+INSERT INTO voucher VALUES('',CONCAT('面值','80','元优惠券（通用项目券）'),1,1,'CASH',1,3,8000,1000000,0,0,1,
+UNIX_TIMESTAMP(),UNIX_TIMESTAMP()+1,0,0,unix_timestamp(NOW()+3),UNIX_TIMESTAMP(),'')
+
+SELECT ROUND(ROUND(RAND(),20)*100000)
+SELECT CONCAT('F0C9E25E3332C399B492FA9A',UNIX_TIMESTAMP(NOW()));
+
+SELECT UNIX_TIMESTAMP(NOW());
+
+INSERT INTO lottery_marketing.voucher_code_bind (
+	`id`,
+	`batch_id`,
+	`voucher_id`,
+	`voucher_task_id`,
+	`user_id`,
+	`code_str`,
+	`code_pwd`,
+	`status`,
+	`update_time`,
+	`get_time`,
+	`consume_time`,
+	`source_type`,
+	`source_id`
+)
+VALUES
+	(
+		'',
+		'0',
+		'4',
+		'11',
+		'1488333704101000016531',
+		'01148826965027154891',
+		'',
+		'1',
+		UNIX_TIMESTAMP(),
+		unix_timestamp(NOW()+3),
+		'0000-00-00 00:00:00',
+		'lotteOrder',
+		'F0C9E25E3332C399B492FA9A1EF8194432'
+); -->
+	
+	<!-- 通过用户名找到手动任务列表 -->
+	<select id="getArtificialPutList" resultMap="VoucherArtificialResultMap">
+		select
+			vtu.id as id, 
+			mt.id as vouchertaskid,
+			mt.operater as operater,
+			uup.mobile,
+			uup.user_id as userid,
+			wap.user_name as operatername,
+			mt.start_time as createtime,
+			mv.nominal_amount as nominalamount
+		from 
+		(select vop.id,vop.operater,vop.start_time from
+		(select vt.* from lottery_marketing.voucher_task vt where vt.triger_mode=2 order by id desc limit #{startIndex},#{endIndex}) as vop) as mt
+		left join lottery_marketing.voucher_task_user tu on mt.id=tu.voucher_task_id
+		left join lottery_user.user_passport uup on tu.user_id= uup.user_id
+		left join ws_lottery.admin_person wap on wap.mobile=uup.mobile
+		left join lottery_marketing.voucher_task_relation vtr on vtr.voucher_task_id=mt.id
+		left join lottery_marketing.voucher mv on mv.id=vtr.voucher_id
+		left join lottery_marketing.voucher_task_user vtu on vtu.voucher_task_id=mt.id
+		where mt.operater in (select ap.admin_person_id as operaterid from ws_lottery.admin_person ap left join lottery_user.user_passport up on ap.mobile=up.mobile 
+		where ap.user_name=#{username}) order by vtu.id desc; 	    
+	</select>
+</mapper>

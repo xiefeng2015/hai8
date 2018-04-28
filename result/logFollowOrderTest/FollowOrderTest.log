@@ -1,0 +1,13 @@
+[2018-03-26 19:29:32] [INFO] App接口请求-> 跟单大厅
+[2018-03-26 19:34:06] [INFO] 001_APIv2_USER_AUTHEN
+[2018-03-26 19:34:06] [INFO] 002_APIv2_LOTTERY_LOGIN
+[2018-03-26 19:34:06] [INFO] APIv2_LOTTERY_ISSUE
+[2018-03-26 19:34:06] [INFO] APIv2_LOTTERY_DOBET
+[2018-03-26 19:34:06] [INFO] APIv2_LOTTERY_FOLLOWOrder
+[2018-03-26 19:34:06] [INFO] 行数：5
+[2018-03-26 19:34:07] [INFO] 请求地址->GET http://cai.pre.wesai.com/v2/lottery/followOrder/house?nickName=&orderBy=&pageSize=&filters=&page=&s=1EBBCC8B07E1E0FBA96E2B8D5D424844&t=1522064038 HTTP/1.1
+[2018-03-26 19:34:07] [INFO] 返回结果：
+Forbidden
+403
+Context{"message":"Token invalid","code":10011}
+

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wesai.lottery.itest.dao.voucher.VoucherCodeBindDao">
+	
+	<sql id="selectId">
+		id,
+		batch_id,
+		voucher_id,
+		voucher_task_id,
+		task_user_log_id,
+		user_id,
+		code_str,
+		code_pwd,
+		status,
+		update_time,
+		get_time,
+		consume_time,
+		source_type,
+		source_id,
+		nominal_amount,
+		amount_type
+	</sql>
+	
+	<sql id="vuId">
+	    vcb.id,
+		vcb.user_id,
+		up.name,
+		up.mobile,
+		vcb.voucher_id,
+		vcb.voucher_task_id,
+		vcb.code_str,
+		vcb.code_pwd,
+		vcb.status,
+		vcb.update_time,
+		vcb.get_time,
+		vcb.consume_time
+	</sql>
+	
+	<resultMap type="VoucherUser" id="VoucherUserResultMap">
+		<id column="id" property="id"/>
+		<result column="user_id" property="user_id"/>
+		<result column="name" property="name"/>
+		<result column="mobile" property="mobile"/>
+		<result column="voucher_id" property="voucher_id"/>
+		<result column="voucher_task_id" property="voucher_task_id"/>
+		<result column="code_str" property="code_str"/>
+		<result column="code_pwd" property="code_pwd"/>
+		<result column="status" property="status"/>
+		<result column="update_time" property="update_time"/>
+		<result column="get_time" property="get_time"/>
+		<result column="consume_time" property="consume_time"/>
+	</resultMap>
+	
+	<!-- 通过卡券编号得到该发放明细列表 -->
+	<select id="getExchangeList" resultType="VoucherCodeBind">
+		select 
+		<include refid="selectId" />
+		from 
+			voucher_code_bind
+		where 
+			1 = 1
+		<if test="voucherId != null and voucherId != ''"> 
+		and	voucher_id = #{voucherId}
+		</if>
+		order by id desc
+		limit
+		#{startIndex}
+		<if test="pageSize != null and pageSize != ''">
+		 ,#{pageSize}
+		</if>
+	</select>
+	
+	<!-- 通过id获取发放明细记录 -->
+	<select id="getExchange" resultType="VoucherCodeBind">
+	    select
+	    <include refid="selectId" />
+		from 
+			voucher_code_bind
+		where
+		    1 = 1
+		<if test="id != null and id != ''"> 
+		and
+			id = #{id}	
+		</if>        
+	</select>
+	
+	<!-- 通过id获取用户的卡券记录 -->
+	<select id="getVoucherUser"  resultMap="VoucherUserResultMap">
+		select 
+		<include refid="vuId" />
+		from 
+			lottery_marketing.voucher_code_bind vcb 
+		left join 
+			lottery_user.user_passport up 
+		on 
+			vcb.user_id = up.user_id
+		where
+		 	1 = 1
+		<choose>
+			<when test="id != null and id != ''">
+			    and vcb.id = 
+			    (select 
+			    	vcb.id 
+			    from 
+			    	voucher_code_bind vcb 
+			    where 
+			    	vcb.voucher_id = #{id, jdbcType=INTEGER} 
+			    order by 
+			    	id desc 
+			    limit 1)	
+			</when>
+			<otherwise>
+			    and vcb.id = 0
+			</otherwise>		    
+		</choose>
+	</select>
+</mapper>

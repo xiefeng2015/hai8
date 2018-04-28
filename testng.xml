@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TestNGSutie">
+    <test name="test1">
+        <classes>
+            <class name="com.wesai.tests.SigninTest"/>
+            <!--<class name="com.wesai.tests.SportLotteryBSKTest"/>-->
+            <!--<class name="com.wesai.tests.SportLotteryFTTest" />-->
+            <!--<class name="com.wesai.tests.SuperLottoTest" />-->
+            <!--<class name="com.wesai.tests.SportLotteryDCTest" />-->
+            <!--<class name="com.wesai.tests.SportOldFootballD14Test" />-->
+            <!--<class name="com.wesai.tests.XJ11x5Test" />-->
+            <!--<class name="com.wesai.tests.SD11x5Test" />-->
+            <!--<class name="com.wesai.tests.SportLotteryBDTest" />-->
+            <!--<class name="com.wesai.tests.FollowOrderTest" />-->
+            <!--<class name="com.wesai.tests.Football_Matches"/>-->
+        </classes>
+
+
+    </test>
+</suite>

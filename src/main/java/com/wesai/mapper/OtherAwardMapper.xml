@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wesai.lottery.itest.dao.award.OtherAwardDao">
+    
+    <select id="getOrderVersion" parameterType="java.lang.String" resultType="java.lang.String">
+        select version from sportlotte_playing.order where order_id = #{orderId};
+    </select>
+    
+    <!-- 调用D3存储过程 -->
+    <select id="call_D3_isOtherOpenAward" statementType="CALLABLE" 
+        parameterType="java.lang.String" resultType="java.lang.String">
+        call ws_d3_open_award_test(#{orderId,mode=IN,jdbcType=VARCHAR});
+    </select>
+    
+    <!-- 调用D5存储过程 -->
+    <select id="call_D5_isOtherOpenAward" statementType="CALLABLE" 
+        parameterType="java.lang.String" resultType="java.lang.String">
+        call ws_d5_open_award_test(#{orderId,mode=IN,jdbcType=VARCHAR});
+    </select>
+    
+    <!-- 调用D7存储过程 -->
+    <select id="call_D7_isOtherOpenAward" statementType="CALLABLE" 
+        parameterType="java.lang.String" resultType="java.lang.String">
+        call ws_d7_open_award_test(#{orderId,mode=IN,jdbcType=VARCHAR});
+    </select>
+    
+    <!-- 调用F001存储过程 -->
+    <select id="call_F001_isOtherOpenAward" statementType="CALLABLE" 
+        parameterType="java.lang.String" resultType="java.lang.String">
+        call ws_F001_open_award_test(#{orderId,mode=IN,jdbcType=VARCHAR});
+    </select>
+    
+    <!-- 调用F3存储过程 -->
+    <select id="call_F3_isOtherOpenAward" statementType="CALLABLE" 
+        parameterType="java.lang.String" resultType="java.lang.String">
+        call ws_F3_open_award_test(#{orderId,mode=IN,jdbcType=VARCHAR});
+    </select>
+    
+    <!-- 调用F7存储过程 -->
+    <select id="call_F7_isOtherOpenAward" statementType="CALLABLE" 
+        parameterType="java.lang.String" resultType="java.lang.String">
+        call ws_F7_open_award_test(#{orderId,mode=IN,jdbcType=VARCHAR});
+    </select>
+    
+    <!-- 调用FT存储过程 -->
+    <select id="call_FT_isOtherOpenAward" statementType="CALLABLE" 
+        parameterType="java.lang.String" resultType="java.lang.String">
+        call ws_FT_open_award_test(#{orderId,mode=IN,jdbcType=VARCHAR});
+    </select>
+    
+    <!-- 调用gd11x5存储过程 -->
+    <select id="call_GD11x5_isOtherOpenAward" statementType="CALLABLE" 
+        parameterType="java.lang.String" resultType="java.lang.String">
+        call ws_gd11x5_open_award_test(#{orderId,mode=IN,jdbcType=VARCHAR});
+    </select>
+    
+    <!-- 调用sx11x5存储过程 -->
+    <select id="call_SX11x5_isOtherOpenAward" statementType="CALLABLE" 
+        parameterType="java.lang.String" resultType="java.lang.String">
+        call ws_sx11x5_open_award_test(#{orderId,mode=IN,jdbcType=VARCHAR});
+    </select>
+    
+    <!-- 调用xj11x5存储过程 -->
+    <select id="call_XJ11x5_isOtherOpenAward" statementType="CALLABLE" 
+        parameterType="java.lang.String" resultType="java.lang.String">
+        call ws_xj11x5_open_award_test(#{orderId,mode=IN,jdbcType=VARCHAR});
+    </select>
+    
+    <!-- 调用T001存储过程 -->
+    <select id="call_T001_isOtherOpenAward" statementType="CALLABLE" 
+        parameterType="java.lang.String" resultType="java.lang.String">
+        call ws_t001_open_award_test(#{orderId,mode=IN,jdbcType=VARCHAR});
+    </select>
+</mapper>

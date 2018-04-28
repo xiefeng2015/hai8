@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wesai.lottery.itest.dao.user.UserPassportDao">
+	
+	<!-- 通过该用户手机号删除其信息 -->
+	<delete id="deleteUser" parameterType="java.lang.String" flushCache="false">
+		delete from 
+			user_passport
+		where
+			mobile = #{mobile}
+	</delete>
+	
+	<sql id="selectId">
+		name,
+		user_id,
+		status,
+		level,
+		sex,
+		mobile,
+		avatar,
+		password_md5,
+		created,
+		last_login_ip,
+		last_login_time,
+		reg_referer,
+		is_robot_user,
+		load_batch_id,
+		passworded
+	</sql>
+	
+	<!-- 通过用户手机号获取用户Id -->
+	<select id="getUserId" resultType="java.lang.String">
+		select 
+			user_id 
+		from 
+			user_passport 
+		where 1 = 1
+		<if test="''">
+		and		
+			mobile = #{mobile}
+		</if>
+	</select>
+	
+	<!-- 通过用户userid获取到该用户昵称名 -->
+	<select id="getNameByUId" resultType="java.lang.String">
+	    select 
+	    	name 
+	    from 
+	    	user_passport 
+	    where 1 = 1
+	    <if test="''">
+	    and
+	    	user_id = #{userid};
+	    </if>
+	</select>
+</mapper>

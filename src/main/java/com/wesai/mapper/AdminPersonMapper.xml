@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wesai.lottery.itest.dao.user.AdminPersonDao">
+	
+    <sql id="selectId">
+        admin_person_id,
+        name,
+        gender,
+        mobile,
+        user_name,
+        password,
+        status,
+        create_time,
+        update_time
+    </sql>
+	<!-- 通过用户账号名获取管理账号信息 -->    
+    <select id="getAdminPerson" parameterType="java.lang.String" resultType="AdminPerson">
+        select
+        <include refid="selectId" /> 
+        from 
+        	admin_person 
+        where 1 = 1
+        <if test="''">
+        and
+			user_name=#{user_name}      	
+        </if>
+    </select>
+    
+    
+</mapper>

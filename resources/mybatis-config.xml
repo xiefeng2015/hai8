@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="cacheEnabled" value="false"/>
+        <setting name="defaultExecutorType" value="REUSE"/>
+    </settings>
+    <typeAliases>
+     	<typeAlias type="com.wesai.model.param.user.UserPassport" alias="UserPassport" />
+     	<typeAlias type="com.wesai.model.param.voucher.Voucher" alias="Voucher" />
+     	<typeAlias type="com.wesai.model.param.voucher.VoucherCodeBind" alias="VoucherCodeBind" />
+     	<typeAlias type="com.wesai.model.param.voucher.VoucherTask" alias="VoucherTask" />
+     	<typeAlias type="com.wesai.model.param.voucher.VoucherUser" alias="VoucherUser" />
+     	<typeAlias type="com.wesai.model.param.voucher.ArtificialList" alias="ArtificialList" />
+     	<typeAlias type="com.wesai.model.param.user.AdminPerson" alias="AdminPerson" />
+     	<typeAlias type="com.wesai.model.param.award.AwardResult" alias="AwardResult" />
+  	</typeAliases>
+</configuration>  
+ 

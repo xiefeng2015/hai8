@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="5" passed="5">
+  <reporter-output>
+  </reporter-output>
+  <suite name="TestNGSutie" duration-ms="2455" started-at="2018-04-19T09:59:55Z" finished-at="2018-04-19T09:59:58Z">
+    <groups>
+    </groups>
+    <test name="test1" duration-ms="2455" started-at="2018-04-19T09:59:55Z" finished-at="2018-04-19T09:59:58Z">
+      <class name="com.wesai.tests.SigninTest">
+        <test-method status="PASS" signature="StartTest(java.lang.reflect.Method)[pri:0, instance:com.wesai.tests.SigninTest@2c6a3f77]" name="StartTest" is-config="true" duration-ms="686" started-at="2018-04-19T17:59:55Z" finished-at="2018-04-19T17:59:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.wesai.tests.SigninTest.USER_AUTHEN_TEST() throws java.io.IOException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- StartTest -->
+        <test-method status="PASS" signature="USER_AUTHEN_TEST()[pri:0, instance:com.wesai.tests.SigninTest@2c6a3f77]" name="USER_AUTHEN_TEST" duration-ms="917" started-at="2018-04-19T17:59:56Z" description="用户请求认证" finished-at="2018-04-19T17:59:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- USER_AUTHEN_TEST -->
+        <test-method status="PASS" signature="StartTest(java.lang.reflect.Method)[pri:0, instance:com.wesai.tests.SigninTest@2c6a3f77]" name="StartTest" is-config="true" duration-ms="2" started-at="2018-04-19T17:59:57Z" finished-at="2018-04-19T17:59:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.wesai.tests.SigninTest.LOTTERY_LOGIN_TEST() throws java.io.IOException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- StartTest -->
+        <test-method status="PASS" signature="LOTTERY_LOGIN_TEST()[pri:0, instance:com.wesai.tests.SigninTest@2c6a3f77]" name="LOTTERY_LOGIN_TEST" duration-ms="422" started-at="2018-04-19T17:59:57Z" description="用户账户登录客户端" finished-at="2018-04-19T17:59:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LOTTERY_LOGIN_TEST -->
+        <test-method status="PASS" signature="StartTest(java.lang.reflect.Method)[pri:0, instance:com.wesai.tests.SigninTest@2c6a3f77]" name="StartTest" is-config="true" duration-ms="1" started-at="2018-04-19T17:59:57Z" finished-at="2018-04-19T17:59:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.wesai.tests.SigninTest.CGJ_odds() throws java.io.IOException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- StartTest -->
+        <test-method status="PASS" signature="CGJ_odds()[pri:0, instance:com.wesai.tests.SigninTest@2c6a3f77]" name="CGJ_odds" duration-ms="158" started-at="2018-04-19T17:59:57Z" description="获取世界杯【猜冠军】赔率接口" finished-at="2018-04-19T17:59:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CGJ_odds -->
+        <test-method status="PASS" signature="GYJ_odds()[pri:0, instance:com.wesai.tests.SigninTest@2c6a3f77]" name="GYJ_odds" duration-ms="139" started-at="2018-04-19T17:59:57Z" description="获取世界杯【冠亚军】赔率" finished-at="2018-04-19T17:59:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GYJ_odds -->
+        <test-method status="PASS" signature="StartTest(java.lang.reflect.Method)[pri:0, instance:com.wesai.tests.SigninTest@2c6a3f77]" name="StartTest" is-config="true" duration-ms="0" started-at="2018-04-19T17:59:57Z" finished-at="2018-04-19T17:59:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.wesai.tests.SigninTest.GYJ_odds() throws java.io.IOException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- StartTest -->
+        <test-method status="PASS" signature="StartTest(java.lang.reflect.Method)[pri:0, instance:com.wesai.tests.SigninTest@2c6a3f77]" name="StartTest" is-config="true" duration-ms="0" started-at="2018-04-19T17:59:58Z" finished-at="2018-04-19T17:59:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.wesai.tests.SigninTest.GYJ_Country() throws java.io.IOException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- StartTest -->
+        <test-method status="PASS" signature="GYJ_Country()[pri:0, instance:com.wesai.tests.SigninTest@2c6a3f77]" name="GYJ_Country" duration-ms="93" started-at="2018-04-19T17:59:58Z" description="获取参与世界杯冠亚军赛选的国家" finished-at="2018-04-19T17:59:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- GYJ_Country -->
+      </class> <!-- com.wesai.tests.SigninTest -->
+    </test> <!-- test1 -->
+  </suite> <!-- TestNGSutie -->
+</testng-results>

@@ -1,0 +1,11 @@
+[2018-03-06 17:21:30] [INFO] 『嗨玩吧』接口请求-> 充值金额
+[2018-03-06 17:21:30] [INFO] 001_API_USER_LOGIN
+[2018-03-06 17:21:30] [INFO] 002_API_USER_AUTHEN
+[2018-03-06 17:21:30] [INFO] 003_API_COIN_RECHARGE
+[2018-03-06 17:21:30] [INFO] 行数：3
+[2018-03-06 17:21:30] [INFO] http://cai.pre.wesai.com/home/getTestCoin
+[2018-03-06 17:21:30] [INFO] 请求地址->GET http://cai.pre.wesai.com/home/getTestCoin?num=100&type=3&userId=1512549452101000019909 HTTP/1.1
+[2018-03-06 17:21:30] [INFO] 返回结果：
+OK
+200
+Context<br>充值零钱(分):100
